@@ -1,24 +1,34 @@
-// DEPENDENCIES
-const express = require('express')
+const express = require("express")
 
-// CONFIGURATION
-require('dotenv').config()
+//CONFIG
+require("dotenv").config()
 const PORT = process.env.PORT
+
+//INIT App instance
 const app = express()
 
-// ROUTES
-app.get('/', (req, res) => {
-    res.send('Welcome to an Awesome App about Breads')
-  })
-  
-  // Breads
-  const breadsController = require('./controllers/breads_controller.js')
-  app.use('/breads', breadsController)
+// MIDDLEWARE
+app.use(express.static("public"))
+app.set('views', __dirname + '/views')
+app.set('view engine', 'jsx')
+app.engine('jsx', require('express-react-views').createEngine())
 
-// LISTEN
-app.listen(PORT, () => {
-  console.log('listening on port', PORT);
+
+//Routes
+app.get("/", (req, res) => {
+    res.send("Welcome to bakery")
 })
 
+// all breads routes
+const breadsController = require("./controllers/breads_controller")
+app.use("/breads", breadsController)
 
-  
+//404 not found page
+app.get("*", (req, res)=> {
+    res.render("notfound")
+})
+
+//Listen
+app.listen(PORT, () => {
+    console.log("listening on port", PORT)
+})
