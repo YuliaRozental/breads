@@ -1,24 +1,12 @@
-const React = require("react")
-const DefaultLayout = require("./layouts/default")
-function IndexView({ breads, title }) {
+const React = require('react')
+const Default = require('./layouts/Default')
+
+function Index () {
     return (
-        <DefaultLayout title={title}>
-            <h1>Hello from index page</h1>
-            <ul>
-                {
-                    breads.map((bread, index) => {
-                        return (
-                            <li key={index}>
-                                <a href={`/breads/${index}`}>
-                                    {bread.name}
-                                </a>
-                            </li>
-                        )
-                    })
-                }
-            </ul>
-        </DefaultLayout>
+      <Default>
+        <h2>Index Page</h2>
+      </Default>
     )
 }
 
-module.exports = IndexView;
+module.exports = Index

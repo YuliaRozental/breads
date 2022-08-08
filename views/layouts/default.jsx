@@ -1,17 +1,20 @@
 const React = require("react")
 
-function DefualtLayout(html){
-    return (
-        <html>
-            <head>
-                <title>{html.title || "Default Layout"}</title>
-            </head>
-            <body>
-                
-                {html.children}
-            </body>
-        </html>
-    )
+const React = require('react')
+
+function Default(html) {
+  return (
+    <html>
+      <head>
+        <title>Default</title>
+      </head>
+      <body>
+        <h1>HTML Rendered!</h1>
+        <div className="container">
+        </div>
+      </body>
+    </html>
+  )
 }
 
-module.exports = DefualtLayout;
+module.exports = Default
